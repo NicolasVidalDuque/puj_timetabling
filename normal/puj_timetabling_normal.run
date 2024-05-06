@@ -1,0 +1,18 @@
+reset;
+
+model horarios.mod ;
+data horarios.dat;
+
+option solver cplex;
+option cplex_options 'timelimit=600 outlev=1 mipdisplay=2';
+
+solve;
+ 
+display {d in D, b in B, m in MT} sum{l in L, p in P} x[d,b,m,l,1,p] > 'C:\Users\pipeh\OneDrive\Documentos\Horarios\resultados_g1.txt';
+
+display {d in D, b in B, m in MT} sum{l in L, p in P} x[d,b,m,l,2,p] > 'C:\Users\pipeh\OneDrive\Documentos\Horarios\resultados_g2.txt';
+display z, _nvars, _ncons;
+display Preferences, Crosses;
+display Asignaciones;
+display _solve_elapsed_time;
+display solve_result_num;

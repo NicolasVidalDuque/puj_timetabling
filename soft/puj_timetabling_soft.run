@@ -1,0 +1,18 @@
+reset;
+
+model horarios_sua.mod ;
+data horarios_sua.dat;
+
+option solver cplex;
+option cplex_options 'timelimit=1200 outlev=1 mipdisplay=2';
+
+solve;
+ 
+display {d in D, b in B, m in MT} sum{l in L, p in P} x[d,b,m,l,1,p] > 'C:\Users\pipeh\OneDrive\Documentos\Horarios\resultados_g1_sua.txt';
+
+display {d in D, b in B,m in MT} sum{l in L, p in P} x[d,b,m,l,2,p] > 'C:\Users\pipeh\OneDrive\Documentos\Horarios\resultados_g2_sua.txt';
+display z;
+display _nvars, _ncons;
+display Preferences, Crosses;
+display _solve_elapsed_time;
+display solve_result_num;
